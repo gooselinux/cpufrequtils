@@ -1,0 +1,12 @@
+--- cpufrequtils-007/Makefile	2010-01-16 14:47:44.000000000 +0100
++++ Makefile.new	2010-07-12 13:55:02.678178641 +0200
+@@ -202,6 +202,9 @@
+ 		--keyword=_ --keyword=N_ $(UTIL_OBJS) && \
+ 	test -f $(PACKAGE).po && \
+ 	mv -f $(PACKAGE).po po/$(PACKAGE).pot
++	# Avoid multilib issues by forcing the POT creation date
++	sed -i 's/POT-Creation-Date: .*\\/POT-Creation-Date: 2010-07-12 13:45+0200\\/' \
++		po/${PACKAGE}.pot
+ 
+ update-gmo: po/$(PACKAGE).pot
+ 	 @for HLANG in $(LANGUAGES); do \
